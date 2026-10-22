@@ -1,0 +1,670 @@
+
+/* ========================================
+   NOCTURNA — ESTILO GENERAL
+======================================== */
+
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #f0e6d8;
+  background: #17151b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --fondo: #17151b;
+  --panel: #211a20;
+  --burdeos: #632638;
+  --burdeos-oscuro: #351b24;
+  --dorado: #c9a66b;
+  --dorado-claro: #e8d1a0;
+  --texto: #f0e6d8;
+  --texto-suave: #b9a9a8;
+  --borde: #49303a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      #35202b 0%,
+      #211a22 40%,
+      #17151b 78%
+    );
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--dorado-claro);
+  outline-offset: 4px;
+}
+
+body.modal-abierto {
+  overflow: hidden;
+}
+
+/* ========================================
+   PÁGINA PRINCIPAL
+======================================== */
+
+.inicio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 28px 6%;
+  overflow: hidden;
+}
+
+.barra-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 42px;
+}
+
+.marca {
+  color: var(--dorado);
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.marca span {
+  color: var(--burdeos);
+}
+
+.boton-ayuda {
+  padding: 10px 16px;
+  color: var(--dorado-claro);
+  background: #251b22;
+  border: 1px solid #72513e;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.boton-ayuda:hover {
+  background: var(--burdeos-oscuro);
+  border-color: var(--dorado);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   PORTADA Y TÍTULO
+======================================== */
+
+.portada {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.etiqueta {
+  margin: 0;
+  color: var(--dorado);
+  font-size: 10px;
+  letter-spacing: 4px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.portada h1 {
+  position: relative;
+  max-width: 100%;
+  margin: 18px 0 12px;
+  padding-left: clamp(6px, 1.5vw, 13px);
+  color: transparent;
+  background: linear-gradient(
+    110deg,
+    #b58b50,
+    #f5e4b8,
+    #c9a66b,
+    #fff0c9,
+    #b58b50
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(43px, 9vw, 86px);
+  font-weight: normal;
+  letter-spacing: clamp(6px, 1.5vw, 13px);
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 0 35px #c9a66b16;
+  animation:
+    aparecer-titulo 1.2s ease-out both,
+    brillo-degradado 6s linear infinite,
+    flotar 4s ease-in-out 1.2s infinite;
+}
+
+@keyframes aparecer-titulo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes brillo-degradado {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 250% center;
+  }
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: min(300px, 75%);
+  margin: 8px 0 18px;
+  color: var(--dorado);
+}
+
+.separador span:not(.rombo) {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--dorado)
+  );
+}
+
+.separador span:last-child {
+  transform: rotate(180deg);
+}
+
+.rombo {
+  font-size: 12px;
+}
+
+.eslogan {
+  max-width: 100%;
+  margin: 0;
+  color: #d6c6c0;
+  font-size: clamp(15px, 2vw, 19px);
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ========================================
+   BOTONES PRINCIPALES
+======================================== */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 42px;
+}
+
+.boton-principal,
+.boton-secundario {
+  display: block;
+  width: min(290px, 100%);
+  min-height: 50px;
+  padding: 14px 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.boton-principal {
+  color: var(--texto);
+  background: linear-gradient(
+    110deg,
+    #51212f,
+    #713044
+  );
+  border: 1px solid var(--dorado);
+  box-shadow: 0 0 20px #8b263514;
+}
+
+.boton-principal:hover {
+  background: linear-gradient(
+    110deg,
+    #713044,
+    #8b344b
+  );
+  box-shadow: 0 0 22px #c9a66b24;
+  transform: translateY(-2px);
+}
+
+.boton-secundario {
+  color: var(--dorado-claro);
+  background: #211a20;
+  border: 1px solid var(--borde);
+}
+
+.boton-secundario:hover {
+  background: #30202a;
+  border-color: var(--dorado);
+  transform: translateY(-2px);
+}
+
+.nota {
+  margin: 25px 0 0;
+  color: #8f8085;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ========================================
+   PIE DE PÁGINA
+======================================== */
+
+.pie {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff0d;
+  color: #776b72;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* ========================================
+   FONDO DE LA VENTANA
+======================================== */
+
+.fondo-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #09070bd9;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow-y: auto;
+  animation: aparecer-fondo 0.2s ease-out;
+}
+
+.fondo-modal.oculto {
+  display: none;
+}
+
+@keyframes aparecer-fondo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   VENTANA DE REGLAS
+======================================== */
+
+.ventana-reglas {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  padding: 36px clamp(20px, 5vw, 42px);
+  overflow-y: auto;
+  color: var(--texto);
+  background:
+    radial-gradient(
+      ellipse at top,
+      #39232d 0%,
+      #241b22 45%,
+      #1b171d 100%
+    );
+  border: 1px solid #76513f;
+  border-radius: 8px;
+  box-shadow:
+    0 25px 100px #00000080,
+    inset 0 0 35px #c9a66b08;
+  animation: subir-ventana 0.25s ease-out;
+}
+
+@keyframes subir-ventana {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cerrar-reglas {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  color: var(--dorado-claro);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cerrar-reglas:hover {
+  background: #ffffff0a;
+  border-color: var(--dorado);
+}
+
+.ventana-reglas > .etiqueta {
+  margin: 0 30px 8px 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-align: left;
+}
+
+.ventana-reglas h2 {
+  margin: 0;
+  color: var(--dorado-claro);
+  font-size: clamp(30px, 6vw, 42px);
+  font-weight: normal;
+}
+
+.intro-reglas {
+  margin: 10px 0 26px;
+  color: var(--texto-suave);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ========================================
+   TARJETAS DE ROLES
+======================================== */
+
+.lista-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rol {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: #ffffff04;
+  border: 1px solid #ffffff0d;
+  border-radius: 6px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.rol:hover {
+  background: #ffffff08;
+  border-color: #76513f;
+}
+
+.icono-rol {
+  display: flex;
+  flex: 0 0 43px;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.icono-rol.mafia {
+  color: #d56b7c;
+  background: #63263830;
+}
+
+.icono-rol.doctor {
+  color: #9fc9ae;
+  background: #315b4530;
+}
+
+.icono-rol.detective {
+  color: var(--dorado);
+  background: #c9a66b12;
+}
+
+.icono-rol.civil {
+  color: #b8a5d5;
+  background: #57416f30;
+}
+
+.rol h3 {
+  margin: 0 0 6px;
+  color: var(--dorado-claro);
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.rol p {
+  margin: 0;
+  color: #c4b7b6;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   CONDICIONES DE VICTORIA
+======================================== */
+
+.reglas-finales {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--borde);
+}
+
+.reglas-finales > h3 {
+  margin: 0 0 10px;
+  color: var(--dorado-claro);
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.reglas-finales > p {
+  margin: 0 0 18px;
+  color: var(--texto-suave);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.condicion {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 5px;
+}
+
+.victoria-mafia {
+  background: #63263822;
+  border: 1px solid #63263880;
+}
+
+.victoria-civiles {
+  background: #c9a66b0b;
+  border: 1px solid #c9a66b40;
+}
+
+.condicion > span {
+  padding-top: 2px;
+  color: var(--dorado);
+  font-size: 20px;
+}
+
+.condicion p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+}
+
+.condicion strong {
+  color: var(--texto);
+  font-size: 14px;
+}
+
+.condicion p span {
+  color: var(--texto-suave);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.minimo-jugadores {
+  margin: 22px 0;
+  color: var(--dorado);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.boton-entendido {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* ========================================
+   PANTALLAS PEQUEÑAS
+======================================== */
+
+@media (max-width: 480px) {
+  .inicio {
+    padding: 20px;
+  }
+
+  .portada {
+    padding: 35px 0;
+  }
+
+  .portada h1 {
+    font-size: clamp(36px, 10vw, 48px);
+    letter-spacing: 5px;
+  }
+
+  .etiqueta {
+    letter-spacing: 2px;
+  }
+
+  .menu {
+    margin-top: 32px;
+  }
+
+  .pie {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .fondo-modal {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .ventana-reglas {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    padding: 30px 16px 22px;
+  }
+
+  .rol {
+    gap: 11px;
+    padding: 12px;
+  }
+
+  .icono-rol {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .rol p {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD: MENOS MOVIMIENTO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
